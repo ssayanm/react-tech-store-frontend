@@ -1,10 +1,12 @@
 import React from "react";
+import Hero from "../components/Hero";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
-      <h1>hello from home page</h1>;
-    </div>
+    <React.Fragment>
+      <Hero />
+    </React.Fragment>
   );
 };
 

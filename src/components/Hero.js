@@ -1,9 +1,12 @@
 import React from "react";
 
-const Hero = () => {
+const Hero = ({ children }) => {
   return (
-    <div>
-      <h1>hello from hero</h1>;
+    <div className="hero">
+      <div className="banner">
+        <h1>eat, sleep, enjoy</h1>
+        <p>embrace your choices - we do</p>
+      </div>
     </div>
   );
 };
