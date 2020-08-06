@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function EmptyCart() {
-  return <h1>hello from empty cart</h1>;
-}
+const EmptyCart = () => {
+  return (
+    <div>
+      <h1>hello from empty cart</h1>;
+    </div>
+  );
+};
+
+export default EmptyCart;

@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function Hero() {
-  return <h1>hello from hero</h1>;
-}
+const Hero = () => {
+  return (
+    <div>
+      <h1>hello from hero</h1>;
+    </div>
+  );
+};
+
+export default Hero;

@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function FeaturedProducts() {
-  return <h1>hello from featured products</h1>;
-}
+const FeaturedProducts = () => {
+  return (
+    <div>
+      <h1>hello from featured products</h1>;
+    </div>
+  );
+};
+
+export default FeaturedProducts;

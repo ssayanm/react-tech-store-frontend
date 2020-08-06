@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function Error() {
-  return <h1>hello form error page</h1>;
-}
+const Error = () => {
+  return (
+    <div>
+      <h1>hello form error page</h1>;
+    </div>
+  );
+};
+
+export default Error;

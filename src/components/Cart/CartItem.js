@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function CartItem() {
-  return <h1>hello form cart item</h1>;
-}
+const CartItem = () => {
+  return (
+    <div>
+      <h1>hello form cart item</h1>;
+    </div>
+  );
+};
+
+export default CartItem;
