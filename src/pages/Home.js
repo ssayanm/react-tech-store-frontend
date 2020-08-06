@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <React.Fragment>
-      <Hero />
+      <Hero>
+        <Link to="/products" className="btn btn-primary btn-hero">
+          Our Products
+        </Link>
+      </Hero>
     </React.Fragment>
   );
 };

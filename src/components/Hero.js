@@ -6,6 +6,7 @@ const Hero = ({ children }) => {
       <div className="banner">
         <h1>eat, sleep, enjoy</h1>
         <p>embrace your choices - we do</p>
+        {children}
       </div>
     </div>
   );
