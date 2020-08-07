@@ -1,15 +1,22 @@
 import React, { createContext, useState, useEffect } from "react";
-import localCart from "../utils/localCart";
+// import localCart from "../utils/localCart";
+
+const getCartFromLocalStorage = () => {
+  return localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+};
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(localCart);
+  const [cart, setCart] = useState(getCartFromLocalStorage);
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState(0);
 
   useEffect(() => {
     //local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
     //cart items
     let newCartItems = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount);
@@ -63,9 +70,28 @@ const CartProvider = ({ children }) => {
     }
   };
   //add to cart
-  const addToCart = (product) => {};
+  const addToCart = (product) => {
+    const {
+      id,
+      image: { url },
+      title,
+      price,
+    } = product;
+    const item = [...cart].find((item) => item.id === id);
+
+    if (item) {
+      increaseAmount(id);
+      return;
+    } else {
+      const newItem = { id, image: url, title, price, amount: 1 };
+      const newCart = [...cart, newItem];
+      setCart(newCart);
+    }
+  };
   //clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    setCart([]);
+  };
 
   return (
     <CartContext.Provider

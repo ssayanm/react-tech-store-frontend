@@ -8,6 +8,8 @@ const ProductDetails = () => {
   const { id } = useParams();
   const history = useHistory();
   const { products } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
+
   const product = products.find((item) => item.id === parseInt(id));
 
   if (products.length === 0) {
@@ -30,6 +32,7 @@ const ProductDetails = () => {
           <button
             className="btn btn-primary btn-block"
             onClick={() => {
+              addToCart(product);
               history.push("/cart");
             }}
           >
