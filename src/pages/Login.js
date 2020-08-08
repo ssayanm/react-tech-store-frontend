@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import loginUser from "../strapi/loginUser";
 import registerUser from "../strapi/registerUser";
+import { UserContext } from "../context/user";
 
 const Login = () => {
   const history = useHistory();
+  const { userLogin } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +17,7 @@ const Login = () => {
 
   const toggelMember = () => {
     setIsMember((prevMember) => {
+      let isMember = !prevMember;
       return isMember ? setUsername("default") : setUsername("");
     });
   };
@@ -23,11 +26,20 @@ const Login = () => {
     e.preventDefault();
     let response;
     if (isMember) {
-      //response= await
+      response = await loginUser({ email, password });
     } else {
+      response = await registerUser({ email, password, username });
     }
     if (response) {
+      const {
+        jwt: token,
+        user: { username },
+      } = response.data;
+      const newUser = { token, username };
+      userLogin(newUser);
+      history.push("/products");
     } else {
+      console.log("error");
     }
   };
 
