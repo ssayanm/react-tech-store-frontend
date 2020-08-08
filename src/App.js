@@ -12,6 +12,7 @@ import ProductDetails from "./pages/ProductDetails";
 
 import Header from "./components/Header";
 import Alert from "./components/Alert";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
@@ -22,7 +23,11 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/checkout" component={Checkout} />
+
+        <PrivateRoute path="/checkout">
+          <Checkout />
+        </PrivateRoute>
+
         <Route exact path="/login" component={Login} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/products/:id" component={ProductDetails} />

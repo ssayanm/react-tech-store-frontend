@@ -29,8 +29,8 @@ const Header = () => {
             )}
           </div>
           <div>
-            <CartLink />
             <LoginLink />
+            <CartLink />
           </div>
         </ul>
       </nav>
