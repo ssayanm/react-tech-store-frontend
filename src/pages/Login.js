@@ -6,14 +6,14 @@ import { UserContext } from "../context/user";
 
 const Login = () => {
   const history = useHistory();
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, alert, showAlert } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("default");
   const [isMember, setIsMember] = useState(true);
 
-  let isEmpty = !email || !password || !username;
+  let isEmpty = !email || !password || !username || alert.show;
 
   const toggelMember = () => {
     setIsMember((prevMember) => {
@@ -23,6 +23,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    showAlert({ msg: "accessing user data..please wait" });
     e.preventDefault();
     let response;
     if (isMember) {
@@ -37,8 +38,13 @@ const Login = () => {
       } = response.data;
       const newUser = { token, username };
       userLogin(newUser);
+      showAlert({ msg: `you are logged in: ${username}. shop away my friend` });
       history.push("/products");
     } else {
+      showAlert({
+        msg: `there was an error, please try again`,
+        type: "danger",
+      });
       console.log("error");
     }
   };
