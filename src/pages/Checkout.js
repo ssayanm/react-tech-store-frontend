@@ -3,7 +3,12 @@ import { CartContext } from "../context/cart";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom";
 import EmptyCart from "../components/Cart/EmptyCart";
-//import react-stripe-elements from "reac"
+import {
+  CardElement,
+  StripeProvider,
+  Elements,
+  injectStripe,
+} from "react-stripe-elements";
 import submitOrder from "../strapi/submitOrder";
 
 const Checkout = (props) => {
@@ -15,12 +20,45 @@ const Checkout = (props) => {
   const isEmpty = !name || alert.show;
 
   const handleSubmit = async (e) => {
+    showAlert({ msg: "submitting order..please wait" });
     e.preventDefault();
+    const response = await props.stripe
+      .createToken()
+      .catch((error) => console.log(error));
+
+    const { token } = response;
+    if (token) {
+      setError("");
+      const { id } = token;
+      let order = await submitOrder({
+        name: name,
+        total: total,
+        items: cart,
+        stripeTokenId: id,
+        userToken: user.token,
+      });
+
+      if (order) {
+        showAlert({ msg: "yor order is complete" });
+        clearCart();
+        history.push("/");
+        return;
+      } else {
+        showAlert({
+          msg: "there was an error with your order, please try again",
+        });
+      }
+    } else {
+      hideAlert();
+      setError(response.error.message);
+    }
   };
+
   if (cart.length < 1) return <EmptyCart />;
   return (
     <section className="section form">
       <h2 className="section-title">checkout</h2>
+
       <form className="checkout-form">
         <h3>
           order total: <span>${total}</span>
@@ -38,6 +76,8 @@ const Checkout = (props) => {
           />
         </div>
 
+        <CardElement className="card-element" />
+
         <div className="stripe-info">
           <label htmlFor="card-element">Credit or Debit Card</label>
           <p className="stripe-info">
@@ -48,6 +88,7 @@ const Checkout = (props) => {
             enter any 3 digits for cvc
           </p>
         </div>
+
         {error && <p className="form-empty">{error}</p>}
         {isEmpty ? (
           <p className="form-empty">please fill out name field</p>
@@ -57,7 +98,7 @@ const Checkout = (props) => {
             onClick={handleSubmit}
             className="btn btn-primary btn-block"
           >
-            submit{" "}
+            submit
           </button>
         )}
       </form>
@@ -65,4 +106,16 @@ const Checkout = (props) => {
   );
 };
 
-export default Checkout;
+const CardForm = injectStripe(Checkout);
+
+const StripeWrapper = () => {
+  return (
+    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_PKEY}>
+      <Elements>
+        <CardForm />
+      </Elements>
+    </StripeProvider>
+  );
+};
+
+export default StripeWrapper;
