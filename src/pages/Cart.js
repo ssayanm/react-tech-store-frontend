@@ -18,7 +18,7 @@ const Cart = () => {
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;
       })}
-      <h2>Total: ${total}</h2>
+      <h2>Total: ₹{total}</h2>
       {user.token ? (
         <Link to="/checkout" className="bt btn-primary btn-block">
           checkout

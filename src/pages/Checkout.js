@@ -62,7 +62,7 @@ const Checkout = (props) => {
 
       <form className="checkout-form">
         <h3>
-          order total: <span>${total}</span>
+          order total: <span>₹{total}</span>
         </h3>
 
         <div className="form-control">

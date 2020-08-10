@@ -12,7 +12,7 @@ const CartItem = ({ id, image, title, price, amount }) => {
       <img src={image} alt={title} />
       <div>
         <h4>{title}</h4>
-        <h5>${price}</h5>
+        <h5>₹{price}</h5>
         <button
           className="cart-btn remove-btn"
           onClick={() => {
