@@ -46,6 +46,7 @@ const Checkout = (props) => {
       } else {
         showAlert({
           msg: "there was an error with your order, please try again",
+          type: "danger",
         });
       }
     } else {
