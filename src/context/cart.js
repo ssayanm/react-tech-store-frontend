@@ -1,5 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 // import localCart from "../utils/localCart";
+import reducer from "./reducer.js";
 
 const getCartFromLocalStorage = () => {
   return localStorage.getItem("cart")
@@ -10,82 +11,56 @@ const getCartFromLocalStorage = () => {
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(getCartFromLocalStorage);
-  const [total, setTotal] = useState(0);
-  const [cartItems, setCartItems] = useState(0);
+  const [cart, dispatch] = useReducer(reducer, getCartFromLocalStorage());
+  const [total, setTotal] = useReducer(0);
+  const [cartItems, setCartItems] = useReducer(0);
 
   useEffect(() => {
-    //local storage
+    // local storage
     localStorage.setItem("cart", JSON.stringify(cart));
     //cart items
     let newCartItems = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount);
     }, 0);
     setCartItems(newCartItems);
-
     //cart total
     let newTotal = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount * cartItem.price);
     }, 0);
-
     newTotal = parseFloat(newTotal.toFixed(2));
     setTotal(newTotal);
   }, [cart]);
 
   //remove item
   const removeItem = (id) => {
-    setCart([...cart].filter((item) => item.id !== id));
+    dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: id });
   };
   //increase amount
   const increaseAmount = (id) => {
-    const newCart = [...cart].map((item) => {
-      return item.id === id
-        ? { ...item, amount: item.amount + 1 }
-        : { ...item };
-    });
-    setCart(newCart);
-
-    // setCart(
-    //   [...cart].map((item) => {
-    //     return item.id === id
-    //       ? { ...item, amount: item.amount + 1 }
-    //       : { ...item };
-    //   })
-    // );
+    dispatch({ type: "INCREASE_ITEM_FROM_CART", payload: id });
   };
 
   //decrease amount
   const decreaseAmount = (id, amount) => {
     if (amount === 1) {
-      removeItem(id);
+      dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: id });
       return;
     } else {
-      setCart(
-        [...cart].map((item) => {
-          return item.id === id
-            ? { ...item, amount: item.amount - 1 }
-            : { ...item };
-        })
-      );
+      dispatch({ type: "DECREASE_ITEM_FROM_CART", payload: id });
     }
   };
   //add to cart
   const addToCart = (product) => {
-    const { id, image, title, price } = product;
-    const item = [...cart].find((item) => item.id === id);
-
+    let item = [...cart].find((item) => item.id === product.id);
     if (item) {
-      increaseAmount(id);
-      return;
+      dispatch({ type: "INCREASE_ITEM_FROM_CART", payload: product.id });
     } else {
-      const newItem = { id, image, title, price, amount: 1 };
-      const newCart = [...cart, newItem];
-      setCart(newCart);
+      dispatch({ type: "ADD_ITEM_TO_CART", payload: product });
     }
   };
   //clear cart
   const clearCart = () => {
-    setCart([]);
+    dispatch({ type: "CLEAR_ITEM_FROM_CART" });
   };
 
   return (
