@@ -1,0 +1,70 @@
+/* 
+  ====== 
+  Buttons 
+  ======
+  */
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: $mainSpacing;
+  color: $primaryColor;
+  border: 2px solid $primaryColor;
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: $mainTransition;
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+
+  &:hover {
+    background: $primaryColor;
+    color: $mainWhite;
+  }
+
+  &-primary {
+    @extend .btn;
+    background: $primaryColor;
+    color: $mainWhite;
+    border-color: $primaryColor;
+
+    &:hover {
+      background: transparent;
+      color: $primaryColor;
+    }
+  }
+
+  &-white {
+    @extend .btn;
+    background: transparent;
+    color: $mainWhite;
+    border-color: $mainWhite;
+
+    &:hover {
+      background: $mainWhite;
+      color: $primaryColor;
+    }
+  }
+
+  &-block {
+    @extend .btn;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: $lightShadow;
+    text-align: center;
+  }
+
+  &-hero {
+    @extend .btn;
+    border-radius: 0;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    background: $primaryDarkColor;
+    border-color: $primaryDarkColor;
+    color: $mainBlack;
+
+    &:hover {
+      color: $primaryDarkColor;
+    }
+  }
+}

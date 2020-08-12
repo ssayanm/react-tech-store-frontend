@@ -43,9 +43,9 @@ Global Styles
 }
 
 body {
-  font-family: var($primaryFont);
-  color: var($mainBlack);
-  background: var($mainBackground);
+  font-family: $primaryFont;
+  color: $mainBlack;
+  background: $mainBackground;
   line-height: 1.4;
   font-size: 1rem;
   font-weight: 300;
@@ -56,9 +56,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var($primaryFont);
+  font-family: $primaryFont;
   margin-bottom: 1.25rem;
-  letter-spacing: var($mainSpacing);
+  letter-spacing: $mainSpacing;
 }
 p {
   margin-bottom: 1.25rem;
@@ -68,7 +68,7 @@ ul {
 }
 a {
   text-decoration: none;
-  color: var($mainBlack);
+  color: $mainBlack;
   cursor: pointer;
 }
 img {
@@ -80,7 +80,7 @@ img {
   text-align: center;
   font-size: 1.7rem;
   margin-top: 3rem;
-  letter-spacing: var($mainSpacing);
+  letter-spacing: $mainSpacing;
 
   img {
     width: 10rem;
@@ -93,52 +93,4 @@ img {
   padding: 0 1rem;
   margin: 0 auto;
   overflow: auto;
-}
-/* 
-  ====== 
-  Buttons 
-  ======
-  */
-.btn,
-.btn-white,
-.btn-primary {
-  text-transform: uppercase;
-  letter-spacing: var($mainSpacing);
-  color: var($primaryColor);
-  border: 2px solid var($primaryColor);
-  padding: 0.45rem 0.8rem;
-  display: inline-block;
-  transition: var($mainTransition);
-  cursor: pointer;
-  font-size: 0.8rem;
-  background: transparent;
-}
-.btn:hover {
-  background: var($primaryColor);
-  color: var($mainWhite);
-}
-.btn-white {
-  background: transparent;
-  color: var($mainWhite);
-  border-color: var($mainWhite);
-}
-.btn-white:hover {
-  background: var($mainWhite);
-  color: var($primaryColor);
-}
-.btn-primary {
-  background: var($primaryColor);
-  color: var($mainWhite);
-  border-color: var($primaryColor);
-}
-.btn-primary:hover {
-  background: transparent;
-  color: var($primaryColor);
-}
-.btn-block {
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-  box-shadow: var($lightShadow);
-  text-align: center;
 }
