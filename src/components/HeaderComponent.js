@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import CartLink from "../components/Cart/CartLink";
+import CartLink from "./Cart/CartLink";
 import { UserContext } from "../context/user";
-import LoginLink from "../components/LoginLink";
+import LoginLink from "./LoginLink";
 
 const Header = () => {
   const { user } = useContext(UserContext);

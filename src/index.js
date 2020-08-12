@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// import "./index.css";
+import "./scss/style.scss";
 import App from "./App";
 import ProductProvider from "./context/products";
 import CartProvider from "./context/cart";

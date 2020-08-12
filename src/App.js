@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 
-import Header from "./components/Header";
+import Header from "./components/HeaderComponent";
 import Alert from "./components/Alert";
 import PrivateRoute from "./components/PrivateRoute";
 import ScrollButton from "./components/ScrollButton";

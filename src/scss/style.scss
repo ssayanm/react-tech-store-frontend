@@ -1,0 +1,111 @@
+@import "global";
+
+/* 
+====== 
+Header
+======
+*/
+.header {
+  padding: 2rem 0;
+
+  .logo {
+    margin: 0 auto;
+    width: 9rem;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: $smallWidth;
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: $maxWidth;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  a {
+    text-transform: capitalize;
+    margin: 0 0.25rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    transition: $mainTransition;
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header a {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+}
+
+/* 
+====== 
+Hero
+======
+*/
+.hero {
+  min-height: calc(65vh);
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(255, 255, 255, 0.1)
+    ),
+    url("../assets/mainBcg.jpeg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $primaryDarkColor;
+
+  h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1.75rem;
+}
+
+}
+.banner {
+  width: $smallWidth;
+  max-width: $fullWidth;
+}
+
+.btn-hero {
+  border-radius: 0;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  background: $primaryDarkColor;
+  border-color: $primaryDarkColor;
+  color: $mainBlack;
+}
+.btn-hero:hover {
+  color: $primaryDarkColor;
+}
+@media screen and (min-width: 768px) {
+  .banner {
+    margin-top: 0;
+  }
+
+  .hero h1 {
+    font-size: 5.3rem;
+  }
+  .hero p {
+    font-size: 2.3rem;
+  }
+  .btn-hero {
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+  }
+}
