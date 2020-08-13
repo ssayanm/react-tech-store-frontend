@@ -11,6 +11,7 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 
 import Header from "./components/HeaderComponent";
+import Footer from "./components/Footer";
 import Alert from "./components/Alert";
 import PrivateRoute from "./components/PrivateRoute";
 import ScrollButton from "./components/ScrollButton";
@@ -35,6 +36,7 @@ const App = () => {
         <Route exact path="/products/:id" component={ProductDetails} />
         <Route component={Error} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

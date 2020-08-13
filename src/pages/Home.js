@@ -1,6 +1,7 @@
 import React from "react";
-import Hero from "../components/Hero";
 import { Link } from "react-router-dom";
+import Hero from "../components/Hero";
+import HomeIntro from "../components/HomeIntro";
 import FeaturedProducts from "../components/Products/FeaturedProducts";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
           Our Products
         </Link>
       </Hero>
+      <HomeIntro />
       <FeaturedProducts />
     </React.Fragment>
   );
