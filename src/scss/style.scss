@@ -111,6 +111,27 @@ HOmepage introduction text
     max-width: $maxWidth;
     margin: 0 auto;
   }
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+
+    .texts {
+      margin-top: 2rem;
+      width: 100%;
+      padding-right: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .home-intro {
+      &-content {
+        flex-direction: row;
+      }
+    }
+  }
 }
 
 /* 

@@ -1,8 +1,8 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, createContext } from "react";
 import axios from "axios";
 import url from "../utils/URL";
 import { featuredProducts, flattenProducts, paginate } from "../utils/helpers";
-export const ProductContext = React.createContext();
+export const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(false);
@@ -47,6 +47,7 @@ const ProductProvider = ({ children }) => {
       setFeatured(featured);
       setLoading(false);
     });
+
     return () => {};
   }, []);
 
