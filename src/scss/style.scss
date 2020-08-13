@@ -6,25 +6,22 @@ Header
 ======
 */
 .header {
-  padding: 2rem 0;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // width: $smallWidth;
+  max-width: $fullWidth;
+  margin: 0 auto;
 
   .logo {
     margin: 0 auto;
-    width: 9rem;
+    width: 13rem;
   }
 
   ul {
     display: flex;
-    justify-content: space-between;
-    width: $smallWidth;
-    margin: 0 auto;
-    margin-top: 2rem;
-    max-width: $maxWidth;
-
-    div {
-      display: flex;
-      align-items: center;
-    }
+    align-items: center;
   }
 
   a {
@@ -43,6 +40,69 @@ Header
   .header a {
     font-size: 1.5rem;
     margin: 0 0.5rem;
+  }
+}
+
+/*
+=============== 
+Navbar
+===============
+*/
+
+.navbar {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  // background: $secondary-color;
+  .nav-center {
+    width: 100vw;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav-header {
+      width: 10rem;
+    }
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    li {
+      margin-left: 2rem;
+      list-style: none;
+
+      a {
+        text-transform: capitalize;
+        color: $primaryDarkColor;
+        font-family: $primaryFont;
+        letter-spacing: $mainSpacing;
+        transition: $mainTransition;
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
+        display: flex;
+
+        &:hover {
+          color: $primaryColor;
+          box-shadow: 0px 2px $primaryColor;
+        }
+      }
+    }
+    .active {
+      color: $primaryDarkColor;
+    }
+  }
+
+  .toggle-btn {
+    display: none;
   }
 }
 

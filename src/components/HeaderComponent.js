@@ -9,29 +9,30 @@ const Header = () => {
   const { user } = useContext(UserContext);
   return (
     <header className="header">
-      <img src={logo} alt="react store logo" className="logo" />
+      <div>
+        <Link to="/">
+          <img src={logo} alt="react store logo" className="logo" />
+        </Link>
+      </div>
       <nav>
         <ul>
-          <div>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          {user.token && (
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/checkout">Checkout</Link>
             </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-            {user.token && (
-              <li>
-                <Link to="/checkout">Checkout</Link>
-              </li>
-            )}
-          </div>
-          <div>
-            <LoginLink />
-            <CartLink />
-          </div>
+          )}
+
+          <LoginLink />
+          <CartLink />
         </ul>
       </nav>
     </header>
