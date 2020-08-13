@@ -13,7 +13,7 @@ const Cart = () => {
     return <EmptyCart />;
   }
   return (
-    <section className="cart-items section">
+    <section className="cart-items cart-section">
       <h2>your cart</h2>
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;

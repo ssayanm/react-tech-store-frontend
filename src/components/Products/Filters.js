@@ -69,7 +69,7 @@ const Filters = () => {
               type="radio"
               name="price"
               value="0"
-              checked={price === "0"}
+              checked={price === 0}
               onChange={updateFilters}
             />
             ₹0 - ₹100
