@@ -361,56 +361,63 @@ Login Form
   width: $smallWidth;
   margin: 0 auto;
   max-width: $maxWidth;
-}
-.login-form,
-.checkout-form {
-  background: $mainWhite;
-  padding: 1.25rem 1rem;
-  text-transform: capitalize;
-  border-radius: $mainBorderRadius;
-  box-shadow: $lightShadow;
-}
 
-.form-control label {
-  display: block;
-}
-.form-control input {
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid $darkGrey;
-  margin-bottom: 1.25rem;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-}
-.form-empty,
-.stripe-errors {
-  text-align: center;
-  color: $mainRed;
-}
-.register-link {
-  margin-bottom: 0;
-  margin-top: 1rem;
-  text-align: center;
-}
-.register-link button {
-  background: transparent;
-  border: none;
-  color: $primaryColor;
-  text-transform: capitalize;
-  font-size: inherit;
-  display: inline-block;
-  margin-left: 0.5rem;
-  cursor: pointer;
-}
-.disabled {
-  color: $mainWhite;
-  background: $darkGrey;
-  border-color: $darkGrey;
-}
-.disabled:hover {
-  background: transparent;
-  color: $darkGrey;
-  border-color: $darkGrey;
+  .login-form,
+  .checkout-form {
+    background: $mainWhite;
+    padding: 1.25rem 1rem;
+    text-transform: capitalize;
+    border-radius: $mainBorderRadius;
+    box-shadow: $lightShadow;
+  }
+
+  .form-control {
+    label {
+      display: block;
+    }
+    input {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid $darkGrey;
+      margin-bottom: 1.25rem;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .form-empty,
+  .stripe-errors {
+    text-align: center;
+    color: $mainRed;
+  }
+  .register-link {
+    margin-bottom: 0;
+    margin-top: 1rem;
+    text-align: center;
+
+    button {
+      background: transparent;
+      border: none;
+      color: $primaryColor;
+      text-transform: capitalize;
+      font-size: inherit;
+      display: inline-block;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .disabled {
+    color: $mainWhite;
+    background: $darkGrey;
+    border-color: $darkGrey;
+
+    &:hover {
+      background: transparent;
+      color: $darkGrey;
+      border-color: $darkGrey;
+    }
+  }
 }
 
 /* 
@@ -430,10 +437,12 @@ Login Button
   letter-spacing: 2px;
   transition: $mainTransition;
   font-weight: 300;
+
+  :hover {
+    color: $primaryColor;
+  }
 }
-.login-btn:hover {
-  color: $primaryColor;
-}
+
 @media screen and (min-width: 768px) {
   .login-btn {
     font-size: 1.5rem;
@@ -554,17 +563,13 @@ Pagination Buttons
   margin: 0 auto;
   margin-top: -4.5rem;
   padding-bottom: 2rem;
-}
-
-.pagination-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
 }
-.page-btn,
-.prev-page-btn,
-.next-page-btn {
+
+.page-btn {
   margin: 0.5rem;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
@@ -573,28 +578,32 @@ Pagination Buttons
   font-size: 1.2rem;
   color: $primaryColor;
   border: none;
+
+  &:hover {
+    background: $primaryColor;
+    color: $mainWhite;
+  }
+
+  &-current {
+    background: $primaryColor;
+    color: $mainWhite;
+  }
 }
-.page-btn:hover {
-  background: $primaryColor;
-  color: $mainWhite;
-}
-.page-btn-current {
-  background: $primaryColor;
-  color: $mainWhite;
-}
+
 .prev-page-btn,
 .next-page-btn {
+  @extend .page-btn;
   border: none;
   color: $primaryColor;
   font-size: 1.75rem;
   display: flex;
   align-items: center;
   transition: $mainTransition;
-}
-.prev-page-btn:hover,
-.next-page-btn:hover {
-  background: $primaryColor;
-  color: $mainWhite;
+
+  &:hover {
+    background: $primaryColor;
+    color: $mainWhite;
+  }
 }
 
 /* 
@@ -608,56 +617,68 @@ Filters Section
   max-width: 25rem;
   padding-top: 4rem;
   margin-bottom: -4rem;
+
+  h6 {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 0.5px solid $mainBlack;
+  }
+  .filters-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+
+    .form-control {
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    label {
+      text-transform: capitalize;
+      margin-bottom: 0.25rem;
+    }
+
+    input[type="text"] {
+      border: 0.5px solid $mainBlack;
+      font-size: 0.8rem;
+      padding: 0.2rem;
+      background: transparent;
+      border-radius: $mainBorderRadius;
+    }
+
+    select {
+      background: transparent;
+      font-size: 0.8rem;
+      border-color: $mainBlack;
+      border-width: 0.5px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+  }
+  .price-group {
+    p {
+      margin-bottom: 0.6rem;
+      text-transform: capitalize;
+    }
+
+    label {
+      display: block;
+    }
+
+    input {
+      margin-right: 0.5rem;
+    }
+  }
 }
-.filters-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
-}
-.filters-form .form-control {
-  display: block;
-  margin-bottom: 0.6rem;
-}
-.filters-form label {
-  text-transform: capitalize;
-  margin-bottom: 0.25rem;
-}
-.filters-form input[type="text"] {
-  border: 0.5px solid $mainBlack;
-  font-size: 0.8rem;
-  padding: 0.2rem;
-  background: transparent;
-  border-radius: $mainBorderRadius;
-}
-.filters-form select {
-  background: transparent;
-  font-size: 0.8rem;
-  border-color: $mainBlack;
-  border-width: 0.5px;
-}
-.filters-form input[type="checkbox"] {
-  margin-right: 0.5rem;
-}
-.price-group p {
-  margin-bottom: 0.6rem;
-  text-transform: capitalize;
-}
-.price-group label {
-  display: block;
-}
-.price-group input {
-  margin-right: 0.5rem;
-}
-.filters-section h6 {
-  text-transform: capitalize;
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-.filters-section hr {
-  border: none;
-  border-top: 0.5px solid $mainBlack;
-}
+
+// .filters-section
 .search-errors {
   margin-top: 8rem;
   font-size: 1.1rem;
