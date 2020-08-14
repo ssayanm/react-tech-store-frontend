@@ -37,9 +37,12 @@ Header
 }
 
 @media screen and (min-width: 768px) {
-  .header a {
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
+  .header {
+    padding: 0;
+    a {
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+    }
   }
 }
 
@@ -139,15 +142,42 @@ HOmepage introduction text
 About
 ======
 */
-.about-section {
-  width: $smallWidth;
-  max-width: $maxWidth;
-  margin: 0 auto;
+.about-page {
+  background: $mainWhite;
+  min-height: 75vh;
 
-  p {
-    line-height: 2rem;
-    font-weight: 400;
-    letter-spacing: 2px;
+  .about-section {
+    width: $smallWidth;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+      line-height: 2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    img {
+      width: 100%;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .about-page {
+    .about-section {
+      flex-direction: row;
+
+      img {
+        width: 30rem;
+      }
+    }
   }
 }
 
