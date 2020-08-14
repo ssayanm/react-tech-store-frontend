@@ -77,3 +77,33 @@
     justify-content: center;
   }
 }
+
+/* 
+====== 
+Login Button
+======
+*/
+.login-btn {
+  text-transform: capitalize;
+  background: transparent;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: $primaryFont;
+  margin: 0 0.25rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  transition: $mainTransition;
+  font-weight: 300;
+
+  :hover {
+    color: $primaryColor;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .login-btn {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+}

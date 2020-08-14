@@ -11,7 +11,7 @@ const ProductList = ({ title, products }) => {
           return <Product key={item.id} {...item} />;
         })}
       </div>
-      <Link to="/products" className="btn-products">
+      <Link to="/products" className="btn-primary btn-products">
         Our Products
       </Link>
     </section>

@@ -395,6 +395,14 @@ Cart
   }
 }
 
+@media screen and (min-width: 768px) {
+  .cart-items {
+    min-height: 45vw;
+    width: 40rem;
+    margin: 0 auto;
+  }
+}
+
 /* 
 ====== 
 Cart Link
@@ -488,33 +496,11 @@ Login Form
   }
 }
 
-/* 
-====== 
-Login Button
-======
-*/
-.login-btn {
-  text-transform: capitalize;
-  background: transparent;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-  font-family: $primaryFont;
-  margin: 0 0.25rem;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  transition: $mainTransition;
-  font-weight: 300;
-
-  :hover {
-    color: $primaryColor;
-  }
-}
-
 @media screen and (min-width: 768px) {
-  .login-btn {
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
+  .form {
+    min-height: 45vw;
+    width: 40rem;
+    margin: 0 auto;
   }
 }
 /* 
@@ -767,7 +753,7 @@ Footer
 
   h5 {
     margin-top: 0.5rem;
-    color: $offWhite;
+    color: $mainBlack;
     font-weight: normal;
     text-transform: uppercase;
   }

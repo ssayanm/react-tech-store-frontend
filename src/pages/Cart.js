@@ -20,11 +20,11 @@ const Cart = () => {
       })}
       <h2>Total: ₹{total}</h2>
       {user.token ? (
-        <Link to="/checkout" className="bt btn-primary btn-block">
+        <Link to="/checkout" className="btn btn-primary btn-block">
           checkout
         </Link>
       ) : (
-        <Link to="/login" className="bt btn-primary btn-block">
+        <Link to="/login" className="btn btn-primary btn-block">
           login
         </Link>
       )}
