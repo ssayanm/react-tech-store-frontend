@@ -9,12 +9,9 @@ const HomeIntro = () => {
   const [sliders, setSliders] = useState([]);
 
   useEffect(() => {
-    // setLoading(true);
     axios.get(`${url}/sliders`).then((response) => {
-      //   console.log(response.data);
       const sliders = response.data;
       setSliders(sliders);
-      //   setLoading(false);
     });
 
     return () => {};

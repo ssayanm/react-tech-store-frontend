@@ -1,31 +1,30 @@
-import React from "react";
-import aboutimage from "../assets/about.jpg";
+import React, { useEffect, useState } from "react";
+import aboutimage from "../assets/mainBcg.jpeg";
+import axios from "axios";
+import url from "../utils/URL";
 
 const About = () => {
+  const [aboutcontent, setAboutcontent] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${url}/innerpages/1`).then((response) => {
+      const aboutcontent = response.data;
+      console.log(aboutcontent.image.url);
+      setAboutcontent(aboutcontent);
+    });
+
+    return () => {};
+  }, []);
   return (
     <section className="section about-page">
-      {" "}
-      <h1 className="section-title">About Us</h1>
+      <h1 className="section-title">{aboutcontent.title || "default title"}</h1>
       <div className="about-section">
         <div>
-          <img src={aboutimage} alt="about" />
+          {aboutcontent.image.url && (
+            <img src={aboutcontent.image.url} alt="about" />
+          )}
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          architecto expedita recusandae. Harum obcaecati provident libero
-          nostrum temporibus, architecto ut debitis enim dolorem fugit facere
-          beatae! Et repellat veniam officiis? Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Numquam architecto expedita recusandae.
-          Harum obcaecati provident libero nostrum temporibus, architecto ut
-          debitis enim dolorem fugit facere beatae! Et repellat veniam officiis?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          architecto expedita recusandae. Harum obcaecati provident libero
-          nostrum temporibus, architecto ut debitis enim dolorem fugit facere
-          beatae! Et repellat veniam officiis? Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Numquam architecto expedita recusandae.
-          Harum obcaecati provident libero nostrum temporibus, architecto ut
-          debitis enim dolorem fugit facere beatae! Et repellat veniam officiis?
-        </p>
+        <p>{aboutcontent.description}</p>
       </div>
     </section>
   );
