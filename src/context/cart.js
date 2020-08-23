@@ -1,5 +1,4 @@
 import React, { createContext, useReducer, useEffect, useState } from "react";
-// import localCart from "../utils/localCart";
 import reducer from "./reducer.js";
 import {
   REMOVE_ITEM_FROM_CART,
@@ -23,7 +22,7 @@ const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(0);
 
   useEffect(() => {
-    // local storage
+    // local storage of cart
     localStorage.setItem("cart", JSON.stringify(cart));
     // cart items
     let newCartItems = cart.reduce((total, cartItem) => {

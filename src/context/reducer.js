@@ -16,7 +16,7 @@ export default (state, action) => {
 
     case ADD_ITEM_TO_CART:
       const { id, image, title, price } = action.payload;
-      let product = { id, image, title, price };
+      let product = { id, image, title, price, amount: 1 };
       return [...state, product];
 
     case REMOVE_ITEM_FROM_CART:
