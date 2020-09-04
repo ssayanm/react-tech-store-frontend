@@ -8,12 +8,6 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
-    // case TOGGLE_CART_HIDDEN:
-    //   return {
-    //     ...state,
-    //     hidden: !state.hidden,
-    //   };
-
     case ADD_ITEM_TO_CART:
       const { id, image, title, price } = action.payload;
       let product = { id, image, title, price, amount: 1 };
