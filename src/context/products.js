@@ -47,7 +47,6 @@ const ProductProvider = ({ children }) => {
       setFeatured(featured);
       setLoading(false);
     });
-
     return () => {};
   }, []);
 
@@ -81,9 +80,7 @@ const ProductProvider = ({ children }) => {
         return title.startsWith(search) ? item : null;
       });
     }
-
     setPage(0);
-
     setSorted(paginate(newProducts));
   }, [filters, products]);
 
