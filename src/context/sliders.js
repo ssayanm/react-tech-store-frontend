@@ -14,7 +14,6 @@ const SliderProvider = ({ children }) => {
       setSliders(sliders);
       setLoading(false);
     });
-
     return () => {};
   }, []);
 
