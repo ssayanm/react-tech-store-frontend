@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
-
 import Header from "./components/HeaderComponent";
 import Footer from "./components/Footer";
 import Alert from "./components/Alert";
