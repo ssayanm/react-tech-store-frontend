@@ -16,7 +16,7 @@ const Footer = () => {
             copyright &copy; {new Date().getFullYear()} all rights reserved
             <br />
             <span>
-              Developed with <FaHeart style={{ color: "#ff355e" }} /> by Sayan
+              Developed with <FaHeart style={{ color: "#ff355f" }} /> by Sayan
               Mukherjee
             </span>
           </h5>
