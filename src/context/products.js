@@ -4,9 +4,12 @@ import url from "../utils/URL";
 import { featuredProducts, flattenProducts, paginate } from "../utils/helpers";
 export const ProductContext = createContext();
 
+const urlapi = "http://localhost:5000";
+
 const ProductProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(false);
   const [products, setProducts] = React.useState([]);
+  const [myproducts, setMyProducts] = React.useState([]);
   const [featured, setFeatured] = React.useState([]);
   // extra state values
   const [sorted, setSorted] = React.useState([]);
@@ -47,6 +50,22 @@ const ProductProvider = ({ children }) => {
       setFeatured(featured);
       setLoading(false);
     });
+
+    // axios.get(`${urlapi}/api/products`).then((response) => {
+    //   const products = flattenProducts(response.data);
+    //   setMyProducts(products);
+
+    //   setLoading(false);
+    // });
+
+    axios.get(`${urlapi}/api/products`, {}).then((response) => {
+      const products = response.data;
+      console.log(products);
+      setMyProducts(products);
+
+      setLoading(false);
+    });
+
     return () => {};
   }, []);
 
@@ -88,6 +107,7 @@ const ProductProvider = ({ children }) => {
     <ProductContext.Provider
       value={{
         products,
+        myproducts,
         loading,
         featured,
         sorted,

@@ -19,14 +19,16 @@ const Checkout = (props) => {
   const [error, setError] = useState("");
   const isEmpty = !name || alert.show;
 
+  console.log(props);
   const handleSubmit = async (e) => {
     showAlert({ msg: "submitting order..please wait" });
     e.preventDefault();
     const response = await props.stripe
       .createToken()
       .catch((error) => console.log(error));
-
+    console.log(response);
     const { token } = response;
+
     if (token) {
       setError("");
       const { id } = token;
@@ -106,6 +108,9 @@ const Checkout = (props) => {
     </section>
   );
 };
+
+
+
 
 const CardForm = injectStripe(Checkout);
 
